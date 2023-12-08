@@ -1,17 +1,60 @@
 import time
-from time import time as my_timer
-import  random
+import random
 
-input("Press enter to start")
+def main():
+    """
+    A simple program to measure reaction time.
 
-wait_time = random.randint(1, 6)
-time.sleep(wait_time)
-start_time = my_timer()
-input("Press enter to stop")
+    Press Enter to start the timer, wait for a random duration, and then press Enter again to stop the timer.
+    The program will then display the start time, end time, and calculate the user's reaction time.
 
-end_time = my_timer()
+    Usage:
+    1. Run the program.
+    2. Press Enter to start the timer.
+    3. Wait for a random duration.
+    4. Press Enter again to stop the timer.
+    5. View the results.
 
-print("Started at " + time.strftime("%X", time.localtime(start_time)))
-print("Ended at " + time.strftime("%X", time.localtime(end_time)))
+    Args:
+        None
 
-print("Your reaction time was {} seconds".format(end_time - start_time))
+    Returns:
+        None
+    """
+    input("Press enter to start")
+
+    # Generate a random wait time between 1 and 6 seconds
+    wait_time = random.randint(1, 6)
+
+    # Wait for the randomly generated duration
+    time.sleep(wait_time)
+    
+    # Record the start time
+    start_time = my_timer()
+
+    input("Press enter to stop")
+
+    # Record the end time
+    end_time = my_timer()
+
+    # Display the start time in a readable format
+    print("Started at " + time.strftime("%X", time.localtime(start_time)))
+
+    # Display the end time in a readable format
+    print("Ended at " + time.strftime("%X", time.localtime(end_time)))
+
+    # Calculate and display the user's reaction time
+    print("Your reaction time was {} seconds".format(end_time - start_time))
+
+def my_timer():
+    """
+    Wrapper function for the time.time() method with a different name.
+
+    Returns:
+        float: The current time in seconds since the epoch.
+    """
+    return time.time()
+
+if __name__ == "__main__":
+    main()
+
